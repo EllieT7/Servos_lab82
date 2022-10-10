@@ -7,6 +7,7 @@
     <link rel="icon" type="image/png" href="icon.png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="http://cdn.rawgit.com/Mikhus/canvas-gauges/gh-pages/download/2.1.7/all/gauge.min.js"></script>
   </head>
   <body>
     <header>
@@ -47,39 +48,29 @@
       </script>
     </header>
     <div style="height: 120px;"></div>
-    <div class="content" style="margin: 0px 40px;display: grid; grid-template-columns: 50% 50%;">
+    <div class="content" style="display: grid; grid-template-columns: 50% 50%; gap: 40px;">
       <!-- Aqui va el contenido :D -->
-      <!--Slider-->
-      <div style="display: flex; justify-content: center; align-items: center;">
+      <!--Servo 1-->
+      <div class="card">
+        <p class="card-title">Servo 1</p>
         <div>
-          <div>
-            Servo 1:<br>
-            <input type="range" id="pwmInput1" name="pwmValue1" min="0" max="1023" value="500" onchange="updateTextInput1(this.value);" >
-            <input type="number" id="textInput1" onchange="updateTextInput1(this.value);" value="500" style="width:50px"><br>
-          </div>
-          <br><br>
-          <div>
-            Servo 2:<br>
-            <input type="range" id="pwmInput2" name="pwmValue2" min="0" max="1023" value="500" onchange="updateTextInput2(this.value);" >
-            <input type="number" id="textInput2" onchange="updateTextInput2(this.value);" value="500" style="width:50px"><br>
-          </div>
-          <script>
-            function updateTextInput1(val) {
-              console.log(val);
-              document.getElementById('pwmInput1').value = val; 
-              document.getElementById('textInput1').value = val; 
-            }
-            function updateTextInput2(val) {
-              console.log(val);
-              document.getElementById('pwmInput2').value = val; 
-              document.getElementById('textInput2').value = val; 
-            }
-          </script>
+            <input type="range" id="pwmInput1" name="pwmValue1" min="0" max="180" value="0" onchange="updateTextInput1(this.value);" >
+            <input type="number" id="textInput1" onchange="updateTextInput1(this.value);" value="0" style="width:50px">
+        </div>
+        <div>
+          <canvas id="servo1"></canvas>
         </div>
       </div>
-      <!--Diagramas-->
-      <div>
-
+      <!--Servo 2-->
+      <div class="card">
+        <p class="card-title">Servo 2</p>
+        <div>
+            <input type="range" id="pwmInput2" name="pwmValue2" min="0" max="180" value="0" onchange="updateTextInput2(this.value);" >
+            <input type="number" id="textInput2" onchange="updateTextInput2(this.value);" value="0" style="width:50px">
+        </div>
+        <div>
+          <canvas id="servo2"></canvas>
+        </div>
       </div>
     </div>
     <div>
@@ -117,6 +108,7 @@
       </div>
       </center>
     </div>
+    <script src="script.js"></script>
     <br><br>
     <img id="piplup" src="https://raw.githubusercontent.com/MicaelaGordillo/IOT_2/main/EjemploST_3/images/logo/piplup.png" alt="">
     <footer>
