@@ -47,8 +47,40 @@
       </script>
     </header>
     <div style="height: 120px;"></div>
-    <div class="content">
+    <div class="content" style="margin: 0px 40px;display: grid; grid-template-columns: 50% 50%;">
       <!-- Aqui va el contenido :D -->
+      <!--Slider-->
+      <div style="display: flex; justify-content: center; align-items: center;">
+        <div>
+          <div>
+            Servo 1:<br>
+            <input type="range" id="pwmInput1" name="pwmValue1" min="0" max="1023" value="500" onchange="updateTextInput1(this.value);" >
+            <input type="number" id="textInput1" onchange="updateTextInput1(this.value);" value="500" style="width:50px"><br>
+          </div>
+          <br><br>
+          <div>
+            Servo 2:<br>
+            <input type="range" id="pwmInput2" name="pwmValue2" min="0" max="1023" value="500" onchange="updateTextInput2(this.value);" >
+            <input type="number" id="textInput2" onchange="updateTextInput2(this.value);" value="500" style="width:50px"><br>
+          </div>
+          <script>
+            function updateTextInput1(val) {
+              console.log(val);
+              document.getElementById('pwmInput1').value = val; 
+              document.getElementById('textInput1').value = val; 
+            }
+            function updateTextInput2(val) {
+              console.log(val);
+              document.getElementById('pwmInput2').value = val; 
+              document.getElementById('textInput2').value = val; 
+            }
+          </script>
+        </div>
+      </div>
+      <!--Diagramas-->
+      <div>
+
+      </div>
     </div>
     <div>
       <h1>Información de la conexión </h1> 
@@ -130,16 +162,4 @@
   <!-- Espacios -->
   <br><br><br><br>
   </body>
-  <script>
-    function teclaPresionada(valor){
-      var xhttp = new XMLHttpRequest();
-          xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-              console.log("todo bien");
-            }
-          };
-          xhttp.open("GET", "/TECLA"+valor, true);
-          xhttp.send();
-    }
-  </script>
 </html>
